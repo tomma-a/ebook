@@ -3,7 +3,7 @@ import os
 import os.path
 import time
 urlindex="https://s.bailushuyuan.org/%E9%9D%92%E9%93%9C%E8%91%B5%E8%8A%B1"
-remove_tags=["script","meta","img","footer","link"]
+remove_tags=["script","meta","img","footer","link","style"]
 urls_selector="ol.text-body-tertiary li a"
 title="aa"
 browser=mechanicalsoup.StatefulBrowser();
@@ -47,8 +47,9 @@ for url in urls:
     #clear(browser.page,remove_tags+["a"])
     save(maincontent,os.path.join(title,href+".html"))
     i+=1
+    url["href"]=href+".html"   
     #if i>5:
     #    break
       
       
-save(mainpage,"index.html")
+save(mainpage,title+"/index.html")

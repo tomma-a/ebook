@@ -2,9 +2,9 @@ import mechanicalsoup
 import os
 import os.path
 import time
-urlindex="https://s.bailushuyuan.org/%E9%9D%92%E9%93%9C%E8%91%B5%E8%8A%B1"
+urlindex=""https://www.yourbiquge.com/book/177725/"
 remove_tags=["script","meta","img","footer","link","style"]
-urls_selector="ol.text-body-tertiary li a"
+urls_selector="div.info-chapters  a"
 title="aa"
 browser=mechanicalsoup.StatefulBrowser();
 browser.open(urlindex)
@@ -42,7 +42,7 @@ for url in urls:
         retry=retry-1
     time.sleep(0.06)
     clear(browser.page,remove_tags+["a"])
-    maincontent=browser.page.select("article.card")[0];
+    maincontent=browser.page.select("div.border3-2")[0];
     #clear(maincontent,remove_tags+["a"])
     #clear(browser.page,remove_tags+["a"])
     save(maincontent,os.path.join(title,href+".html"))

@@ -25,7 +25,7 @@ jobs:
              python3 -m venv vpython
              source vpython/bin/activate
              pip install aiohttp beautifulsoup4 mechanicalsoup
-             python download.py
+             python download_async.py
              ebook-convert aa/index.html   aaa.epub
       - name: Upload Application Artifact
         uses: actions/upload-artifact@v4 # Use the upload-artifact action

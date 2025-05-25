@@ -48,7 +48,7 @@ async def main():
     if not os.path.exists(title):
         os.mkdir(title)
     urls=mainpage.select(urls_selector)
-    clear(mainpage,remove_tags)
+    b=await clear(mainpage,remove_tags)
     i=0;
     async with aiohttp.ClientSession() as session:
         for url in urls:

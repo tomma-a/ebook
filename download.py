@@ -2,7 +2,7 @@ import mechanicalsoup
 import os
 import os.path
 import time
-urlindex=""https://www.yourbiquge.com/book/177725/"
+urlindex="https://www.yourbiquge.com/book/177725/"
 remove_tags=["script","meta","img","footer","link","style"]
 urls_selector="div.info-chapters  a"
 title="aa"

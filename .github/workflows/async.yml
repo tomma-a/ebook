@@ -23,7 +23,7 @@ jobs:
         run: |
              sudo apt update && sudo apt install -y  python3-pip python3-venv
              python3 -m venv vpython
-             source vpython/bin/activate
+             . ./vpython/bin/activate
              pip install aiohttp beautifulsoup4 mechanicalsoup
              python download_async.py
              ebook-convert aa/index.html   aaa.epub

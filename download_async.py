@@ -17,7 +17,7 @@ async def fetch(session, url):
     return ""
 
 async def get_main_content(content):
-       return content.select("article.card")[0];
+       return content.select("div.border3-2")[0];
 async def parse(html):
     soup = BeautifulSoup(html, 'html.parser')
     # Do something with the links
@@ -35,10 +35,10 @@ async def save(page,filename):
         f.write(bytearray("</body></html>".encode("ascii")))
     return True
 async def main():
-    urlindex="https://s.bailushuyuan.org/%E9%9D%92%E9%93%9C%E8%91%B5%E8%8A%B1"
-    baseurl="https://s.bailushuyuan.org"
+    urlindex="https://www.yourbiquge.com/book/177725/"
+    baseurl="https://www.yourbiquge.com"
     remove_tags=["script","meta","img","footer","link"]
-    urls_selector="ol.text-body-tertiary li a"
+    urls_selector="div.info-chapters  a"
     title="aa"
     browser=mechanicalsoup.StatefulBrowser();
     browser.open(urlindex)

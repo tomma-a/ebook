@@ -1,0 +1,35 @@
+name: ebook_async
+on:
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
+jobs:
+  ebook-job:
+    runs-on: ubuntu-latest
+    container:
+      image: lscr.io/linuxserver/calibre
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+         detached: true
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      - name:  create-ebook
+        run: |
+             sudo apt update && sudo apt install -y  python3-pip
+             python3 -m venv vpython
+             source vpython/bin/activate
+             pip install aiohttp beautifulsoup4 mechanicalsoup
+             python download.py
+             ebook-convert aa/index.html   aaa.mobi
+      - name: Upload Application Artifact
+        uses: actions/upload-artifact@v4 # Use the upload-artifact action
+        with:
+          name: ebook
+          path: aaa.mobi
+          retention-days: 7 # Optional: How long to keep the artifact (default 90)

@@ -66,7 +66,7 @@ async def main():
     url["href"]=href+".html"
     #if i>5:
     #    break
-    b=await save(mainpage,titile+"/index.html")
+    b=await save(mainpage,title+"/index.html")
 
 
 asyncio.run(main())

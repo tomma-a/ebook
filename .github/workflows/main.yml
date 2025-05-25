@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+        with:
+         detached: true
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
       - name:  create-ebook
         run: |

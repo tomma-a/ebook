@@ -23,10 +23,10 @@ jobs:
         run: |
              sudo apt update && sudo apt install -y  python3-mechanicalsoup
              python3 download.py
-             ebook-convert aa/index.html   aaa.mobi
+             ebook-convert aa/index.html   aaa.epub
       - name: Upload Application Artifact
         uses: actions/upload-artifact@v4 # Use the upload-artifact action
         with:
           name: ebook
-          path: aaa.mobi
+          path: aaa.epub
           retention-days: 7 # Optional: How long to keep the artifact (default 90)

@@ -33,7 +33,7 @@ for url in urls:
     if os.path.exists(os.path.join(title,href)):
         continue;
     retry=3;
-    while True:
+    while retry>0:
         r=browser.follow_link(url)
         print(r.status_code)
         if r.status_code==200:
